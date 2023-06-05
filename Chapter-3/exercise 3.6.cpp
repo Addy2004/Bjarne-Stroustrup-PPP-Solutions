@@ -1,24 +1,24 @@
 #include "../../std_lib_facilities.h"
 
 /*
-easiest way in my opinion to compare three numbers without involving pointers or library functions
+shortest way in my opinion to compare three numbers without involving pointers or library functions or temp variables
 */
-int main()
+// xor swap supremacy
+void main()
 {
 	cout << "Enter your three numbers (seperated by a whitespace): ";
 	int a, b, c;
 	cin >> a >> b >> c;
-	int small = a, mid = b, large = c, buffer;
 
-	if (small > large)
-		small = c, large = a;
+	if (a > c)
+		a = a ^ c, c = a ^ c, a = a ^ c;
 
-	if (mid > large)
-		mid = large, large = b;
+	if (b > c)
+		b = b ^ c, c = b ^ c, b = b ^ c;
 
-	if (small > mid)
-		buffer = small, small = mid, mid = buffer;
+	if (a > b)
+		a = a ^ b, b = a ^ b, a = a ^ b;
 
 	cout << "sorted order ==> "
-		<< small << " < " << mid << " < " << large;
+		<< a << " < " << b << " < " << c;
 }
